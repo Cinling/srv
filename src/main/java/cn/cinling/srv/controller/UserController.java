@@ -1,6 +1,6 @@
 package cn.cinling.srv.controller;
 
-import cn.cinling.srv.model.UserDomain;
+import cn.cinling.srv.entity.UserEntity;
 import cn.cinling.srv.service.user.UserService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping("/add")
     public String addUser(){
-        UserDomain user = new UserDomain();
+        UserEntity user = new UserEntity();
         user.setUserName("aa");
         user.setPassword("bb");
         user.setPhone("cc");

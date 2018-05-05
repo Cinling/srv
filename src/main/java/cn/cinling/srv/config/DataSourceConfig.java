@@ -25,7 +25,7 @@ import javax.sql.DataSource;
  * 2018/4/19 18:46
  */
 @Configuration
-@MapperScan("cn.cinling.srv.dao")
+@MapperScan("cn.cinling.srv.mapper")
 @EnableTransactionManagement
 public class DataSourceConfig {
 

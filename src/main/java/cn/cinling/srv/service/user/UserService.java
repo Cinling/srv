@@ -1,11 +1,11 @@
 package cn.cinling.srv.service.user;
 
-import cn.cinling.srv.model.UserDomain;
+import cn.cinling.srv.entity.UserEntity;
 
 import java.util.List;
 
 public interface UserService {
-    int addUser(UserDomain user);
+    int addUser(UserEntity user);
 
-    List<UserDomain> findAllUser(int pageNum, int pageSize);
+    List<UserEntity> findAllUser(int pageNum, int pageSize);
 }

@@ -1,6 +1,6 @@
-package cn.cinling.srv.model;
+package cn.cinling.srv.entity;
 
-public class UserDomain {
+public class UserEntity {
     private Integer userId;
 
     private String userName;

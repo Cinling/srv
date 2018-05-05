@@ -1,7 +1,7 @@
 package cn.cinling.srv.service.user.impl;
 
-import cn.cinling.srv.dao.UserDao;
-import cn.cinling.srv.model.UserDomain;
+import cn.cinling.srv.mapper.UserMapper;
+import cn.cinling.srv.entity.UserEntity;
 import cn.cinling.srv.service.user.UserService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;//这里会报错，但是并不会影响
+    private UserMapper userDao;//这里会报错，但是并不会影响
 
     @Override
-    public int addUser(UserDomain user) {
+    public int addUser(UserEntity user) {
 
         return userDao.insert(user);
     }
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
      * pageSize 每页显示的数据条数
      * */
     @Override
-    public List<UserDomain> findAllUser(int pageNum, int pageSize) {
+    public List<UserEntity> findAllUser(int pageNum, int pageSize) {
         //将参数传给这个方法就可以实现物理分页了，非常简单。
         PageHelper.startPage(pageNum, pageSize);
         return userDao.selectUsers();
