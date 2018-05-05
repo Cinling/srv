@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    
 </head>
 <body>
-<h1>Hello World!</h1>
+
+<nav id="vue" class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/index}">首页</a>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <template v-for="(item, index) in menu.child">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{item.name}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <template v-for="(item_2, index_2) in item.child">
+                    <a class="dropdown-item" v-bind:href="(item_2.url)">{{item_2.name}}</a>
+                    </template>
+                </div>
+            </li>
+            </template>
+        </ul>
+    </div>
+</nav>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    let app = new Vue({
+        el: "#vue",
+        data: {
+            test:123123,
+            menu: {}
+        },
+        method: {
+        
+        },
+        /**
+         * 对象创建后执行的方法
+         */
+        created: function() {
+            $.ajax({
+                url: "/get-menu",
+                data: {},
+                method: "post",
+                dataType: "text",
+                success: function(text) {
+                    app.menu = JSON.parse(text);
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
+    });
+</script>
+
 </body>
 </html>
