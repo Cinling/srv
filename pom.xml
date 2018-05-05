@@ -55,6 +55,15 @@
         </dependency>
 
 
+        <!-- 数据库版本管理工具 -->
+        <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+
+
         <!-- 根据教程，另外添加的内容，教程地址：https://blog.csdn.net/Winter_chen001/article/details/80010967 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
