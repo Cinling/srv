@@ -1,6 +1,6 @@
 package cn.cinling.srv.controller;
 
-import cn.cinling.srv.model.Menu;
+import cn.cinling.srv.model.MenuModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +20,6 @@ public class HomeController extends BaseController {
     @RequestMapping("/get-menu")
     @ResponseBody
     public String GetMenu() {
-        return Menu.GetInstance().GetMenuJSONObject().toJSONString();
+        return MenuModel.GetInstance().GetMenuJSONObject().toJSONString();
     }
 }

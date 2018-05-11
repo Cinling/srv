@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html lang="zh"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="${@mvcResourceUrlProvider.getForLookupPath('/css/home/index.css')}" />
     
 </head>
 <body>
 
-<nav id="vue" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="indexVue" class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" th:href="@{/index}">首页</a>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,7 +24,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <template v-for="(item_2, index_2) in item.child">
-                    <a class="dropdown-item" v-bind:href="(item_2.url)">{{item_2.name}}</a>
+                    <a class="dropdown-item" v-on:click="OpenView(item_2.url)">{{item_2.name}}</a>
                     </template>
                 </div>
             </li>
@@ -29,6 +32,13 @@
         </ul>
     </div>
 </nav>
+
+
+<div id="index-container">
+
+</div>
+
+
 
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
@@ -38,14 +48,30 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-    let app = new Vue({
-        el: "#vue",
+    let indexVue = new Vue({
+        el: "#indexVue",
         data: {
-            test:123123,
             menu: {}
         },
-        method: {
-        
+        methods: {
+            /**
+             * 打开新页面
+             * @param {string} url 请求的地址
+             */
+            OpenView: function(url) {
+                $.ajax({
+                    url: url,
+                    method: "post",
+                    data: {},
+                    dataType: "text",
+                    success: function(text) {
+                        $("#index-container").html(text);
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            }
         },
         /**
          * 对象创建后执行的方法
@@ -57,7 +83,7 @@
                 method: "post",
                 dataType: "text",
                 success: function(text) {
-                    app.menu = JSON.parse(text);
+                    indexVue.menu = JSON.parse(text);
                 },
                 error: function(error) {
                     console.error(error);
