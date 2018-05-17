@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping(value = "/user")
 public class UserController extends BaseController {
@@ -36,5 +38,40 @@ public class UserController extends BaseController {
         //开始分页
         PageHelper.startPage(pageNum,pageSize);
         return userService.findAllUser(pageNum,pageSize);
+    }
+
+    /**
+     * 管理员查看的页面
+     * @return html页面
+     */
+    @GetMapping("admin-management")
+    public String AdminManagement() {
+
+
+        return "user/admin-management";
+    }
+
+    @ResponseBody
+    @GetMapping("set-session")
+    public String TSetSession() {
+        HttpSession session = this.GetSession();
+        session.setAttribute("a", "qqq");
+
+        return "succ";
+    }
+
+    @ResponseBody
+    @GetMapping("get-session")
+    public String TGetSession() {
+        HttpSession session = this.GetSession();
+
+        String ret;
+        try {
+            ret = session.getAttribute("a").toString();
+        } catch (Exception e) {
+            ret = "没有东西";
+        }
+
+        return ret;
     }
 }
