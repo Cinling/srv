@@ -32,7 +32,7 @@ public class MenuModel {
      */
     private void InitMenu() {
         // 菜单根节点
-        this.menu = new Menu("menu");
+        this.menu = new Menu("菜单");
 
         // 系统
         Menu system = new Menu("系统");
@@ -47,6 +47,7 @@ public class MenuModel {
      */
     public JSONObject GetMenuJSONObject() {
         JSONObject menuJson = new JSONObject();
+        menuJson.put("name", this.menu.getName());
         menuJson.put("child", this.GetChildArray(this.menu.GetChildList()));
         return menuJson;
     }

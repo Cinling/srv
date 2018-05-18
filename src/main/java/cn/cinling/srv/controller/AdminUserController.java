@@ -25,20 +25,4 @@ public class AdminUserController extends BaseController {
     public String AdminManagement() {
         return "admin-user/home";
     }
-
-    @ResponseBody
-    @RequestMapping("test")
-    public String SqlTest() {
-//        adminUserService.AddAdminUser(new AdminUserEntity("account", "123456", "nickname", 444));
-//        return "finish";
-        List<AdminUserEntity> adminUserEntityList = adminUserService.GetAll();
-
-        StringBuilder retString = new StringBuilder();
-
-        for (AdminUserEntity adminUserEntity: adminUserEntityList) {
-            retString.append(adminUserEntity.getCreateTime());
-        }
-
-        return retString.toString();
-    }
 }
