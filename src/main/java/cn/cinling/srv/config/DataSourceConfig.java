@@ -1,6 +1,5 @@
 package cn.cinling.srv.config;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInterceptor;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -9,10 +8,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -46,6 +41,13 @@ public class DataSourceConfig {
         fb.setPlugins(new Interceptor[]{pageInterceptor});
         fb.setTypeAliasesPackage(env.getProperty("mybatis.type-aliases-package"));
         fb.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(env.getProperty("mybatis.mapper-locations")));
+
+        // JAVA 驼峰式命名支持。如：create_time 会映射为 createTime
+        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+        configuration.setMapUnderscoreToCamelCase(true);
+
+        fb.setConfiguration(configuration);
+
         return fb.getObject();
     }
 }

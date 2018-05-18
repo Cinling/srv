@@ -40,17 +40,6 @@ public class UserController extends BaseController {
         return userService.findAllUser(pageNum,pageSize);
     }
 
-    /**
-     * 管理员查看的页面
-     * @return html页面
-     */
-    @GetMapping("admin-management")
-    public String AdminManagement() {
-
-
-        return "user/admin-management";
-    }
-
     @ResponseBody
     @GetMapping("set-session")
     public String TSetSession() {

@@ -1,36 +1,51 @@
-
-
-<div id="homeVue" class="container-fluid">
-    
-    
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-<script type="text/javascript">
-    let homeApp = new Vue({
-        el: "#homeVue",
-        data: {
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <div id="homeVue" class="container-fluid">
         
-        },
-        methods: {
+        {{component.startTime}}
         
-        }
-    });
-</script>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/js/html-component.js')}"></script>
+    <script type="text/javascript">
+        let homeApp = new Vue({
+            el: "#homeVue",
+            data: {
+                component: {
+                    startTime: ""
+                }
+            },
+            methods: {
+
+            },
+            created: function() {
+                this.component.startTime = htmlComponent.Time("startTime");
+            }
+        });
+    </script>
+</body>
+
+</html>

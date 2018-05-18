@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh"
-      xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
@@ -11,8 +12,11 @@
     
 </head>
 <body>
+<div id="indexVue">
 
-<nav id="indexVue" class="navbar navbar-expand-lg navbar-light bg-light">
+<!--导航栏-->
+{{menuHtml}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" th:href="@{/index}">首页</a>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -33,65 +37,31 @@
     </div>
 </nav>
 
-
-<div id="index-container">
-
 </div>
 
-
-
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-
 <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+<script th:src="${@mvcResourceUrlProvider.getForLookupPath('/js/html-component.js')}"></script>
 
 <script type="text/javascript">
     let indexVue = new Vue({
         el: "#indexVue",
         data: {
-            menu: {}
-        },
-        methods: {
-            /**
-             * 打开新页面
-             * @param {string} url 请求的地址
-             */
-            OpenView: function(url) {
-                $.ajax({
-                    url: url,
-                    method: "post",
-                    data: {},
-                    dataType: "text",
-                    success: function(text) {
-                        $("#index-container").html(text);
-                    },
-                    error: function(error) {
-                        console.error(error);
-                    }
-                });
-            }
+            menuHtml: ""
         },
         /**
          * 对象创建后执行的方法
          */
         created: function() {
-            $.ajax({
-                url: "/get-menu",
-                data: {},
-                method: "post",
-                dataType: "text",
-                success: function(text) {
-                    indexVue.menu = JSON.parse(text);
-                },
-                error: function(error) {
-                    console.error(error);
-                }
+            setTimeout(function() {
+                // 获取菜单的html内容
+                indexVue.menuHtml = HTMLComponent.GetMenuHtml();
             });
         }
     });
 </script>
-
 </body>
 </html>
