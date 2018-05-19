@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cinling.srv.mapper.SystemMonitorMapper" >
+
+    <select id="SelectByLimit" resultType="cn.cinling.srv.entity.SystemMonitorEntity">
+        SELECT id, memory_total, memory_use, disk_total, disk_use, time
+        FROM system_monitor LIMIT #{skip}, #{limit}
+    </select>
+
+</mapper>

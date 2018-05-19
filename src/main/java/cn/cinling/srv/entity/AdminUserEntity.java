@@ -12,14 +12,6 @@ public class AdminUserEntity {
         this.createTime = createTime;
     }
 
-    public AdminUserEntity(Integer id, String account, String password, String nickname, Integer createTime) {
-        this.id = id;
-        this.account = account;
-        this.password = password;
-        this.nickname = nickname;
-        this.createTime = createTime;
-    }
-
     public Integer getId() {
         return id;
     }

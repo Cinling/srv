@@ -1,4 +1,9 @@
-# srv
+  ## 项目简介
+**项目所需的软件版本**  
+>       jdk 1.8.x 或以上版本
+>       Apache Maven 3.5.3 或以上版本
 
-#参考项目
- 1. https://github.com/ityouknow/spring-boot-examples.git
+  
+**运行环境**  
+>       redis 3.0 或以上版本  
+>       mysql 5.6 或以上版本

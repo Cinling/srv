@@ -122,7 +122,35 @@ var Menu = {
         this.menuId += 1;
         return this.menuId;
     },
+    /**
+     * 跳转路径
+     * @param url
+     */
     JumpToUrl: function(url) {
         window.location = url;
     }
 };
+
+
+// 从 服务器 获取菜单的数据，并加载到 VUE 中
+Menu.GetMenuHtml(function(html) {
+    Vue.component("srv-menu", {
+        data: function() {
+            return {
+                menuHtml: html
+            };
+        },
+        mounted: function() {
+            // 初始化菜单的按钮
+            Menu.InitMenuEvents();
+        },
+        methods: {
+
+        },
+        template: "<span v-html='menuHtml'></span>"
+    });
+});
+
+
+
+
