@@ -12,8 +12,7 @@
 </head>
 <body>
 <div id="indexVue">
-    <!--菜单-->
-    <!--<span v-html="menuHtml"></span>-->
+    <!--菜单。通过 vue 组建加载-->
     <srv-menu></srv-menu>
     
     <div class="container">
@@ -28,7 +27,11 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="data_grid" role="tabpanel" aria-labelledby="home-tab">
                 
-                
+                <srv-pagination
+                        v-bind:on-change="ChangePage"
+                        v-bind:count="table.count">
+                    
+                </srv-pagination>
                 
                 <table class="table table-sm">
                     <tbody>
@@ -67,12 +70,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
 <script th:src="${@mvcResourceUrlProvider.getForLookupPath('/js/component/menu.js')}"></script>
+<script th:src="${@mvcResourceUrlProvider.getForLookupPath('/js/component/pagination.js')}"></script>
 
 <script type="text/javascript">
     let indexVue = new Vue({
         el: "#indexVue",
         data: {
-            menuHtml: "",
             /**
              * @var {Array} 从服务器中取出来的所有数据
              */
@@ -82,7 +85,7 @@
              */
             tableShowData: [],
             table: {
-                count: [],
+                count: 0,
                 page: 1,
                 rows: 10
             }
@@ -100,7 +103,7 @@
                         try {
                             let json = JSON.parse(text);
                             indexVue.systemInfoArray = json.data;
-                            indexVue.count = json.count;
+                            indexVue.table.count = json.count;
                         } catch (e) {
                             console.error(e);
                             alert("获取数据失败：js异常");
@@ -116,18 +119,30 @@
              * 设置需要显示的数据
              */
             SetShowTableData: function() {
+                this.tableShowData = [];
+                
                 let maxIndex = ((this.table.page - 1) * this.table.rows) + this.table.rows;
                 for (let index = ((this.table.page - 1) * this.table.rows); index < maxIndex; ++index) {
-                    this.tableShowData.push(this.systemInfoArray[index]);
+                    if (index < this.systemInfoArray.length) {
+                        this.tableShowData.push(this.systemInfoArray[index]);
+                    }
                 }
+            },
+            /**
+             * 修改页码
+             * @param page
+             * @param rows
+             */
+            ChangePage: function(page, rows) {
+                let tmpTable = this.table;
+                this.table = Object.assign({
+                    count: tmpTable.count,
+                    page: page,
+                    rows: rows
+                });
             }
         },
         created: function () {
-            // 初始化菜单
-            Menu.GetMenuHtml(function(menuHtml) {
-                indexVue.menuHtml = menuHtml;
-            });
-            
             // 初始化表格数据
             this.GetSystemInfo();
         },
