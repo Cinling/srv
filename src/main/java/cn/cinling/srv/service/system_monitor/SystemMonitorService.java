@@ -12,4 +12,9 @@ public interface SystemMonitorService {
      * @return 数据列表
      */
     List<SystemMonitorEntity> GetByPage(int page, int rows);
+
+    /**
+     * 插入一条数据
+     */
+    void Add(SystemMonitorEntity systemMonitorEntity);
 }

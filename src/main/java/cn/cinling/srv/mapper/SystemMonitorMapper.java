@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface SystemMonitorMapper {
     List<SystemMonitorEntity> SelectByLimit(@Param("skip") int skip, @Param("limit") int limit);
+
+    void Insert(SystemMonitorEntity systemMonitorEntity);
 }

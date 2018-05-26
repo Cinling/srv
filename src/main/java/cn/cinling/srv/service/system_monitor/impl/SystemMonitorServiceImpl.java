@@ -18,4 +18,16 @@ public class SystemMonitorServiceImpl implements SystemMonitorService {
         int skip = (page - 1) * rows;
         return systemMonitorMapper.SelectByLimit(skip, rows);
     }
+
+    @Override
+    public void Add(SystemMonitorEntity systemMonitorEntity) {
+        if (systemMonitorEntity.getTime() == null) {
+            systemMonitorEntity.setTime(Integer.valueOf(String.valueOf(System.currentTimeMillis() / 1000)));
+        }
+
+        systemMonitorEntity.setDiskTotal( Math.round(systemMonitorEntity.getDiskTotal() * 1000) / 1000.0 );
+        systemMonitorEntity.setDiskUse( Math.round(systemMonitorEntity.getDiskUse() * 1000) / 1000.0 );
+
+        systemMonitorMapper.Insert(systemMonitorEntity);
+    }
 }
