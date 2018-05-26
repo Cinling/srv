@@ -1,13 +1,13 @@
 server:
-  port: 8080
+  port: HTTP_PORT
 
 
 spring:
     datasource:
         name: srv
-        url: jdbc:mysql://127.0.0.1:3306/srv?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-        username: root
-        password: 123456
+        url: jdbc:mysql://127.0.0.1:DB_PORT/DB_NAME?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+        username: DB_USERNAME
+        password: DB_PASSWORD
         # 使用druid数据源
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
