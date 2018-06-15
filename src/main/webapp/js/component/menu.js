@@ -107,7 +107,7 @@ var Menu = {
         srvMenuItemList.unbind("click");
         srvMenuItemList.on("click", function(event) {
             let url = $(event.target).data("url");
-            if (url !== null) {
+            if (url !== null && url !== undefined) {
                 Menu.JumpToUrl(url);
             } else {
                 // 如果是没有链接，不会触发任何操作
