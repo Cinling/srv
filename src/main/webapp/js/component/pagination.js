@@ -76,7 +76,7 @@ Vue.component("srv-pagination", {
          */
         NextPage: function() {
             this.page = this.page + 1;
-            let maxPage = this.count / this.rows;
+            let maxPage = parseInt(this.count / this.rows) + 1;
             if (this.page > maxPage) {
                 this.page = maxPage;
             }
@@ -86,7 +86,7 @@ Vue.component("srv-pagination", {
          * 最后一页
          */
         LastPage: function () {
-            this.page = this.count / this.rows + 1;
+            this.page = parseInt(this.count / this.rows) + 1;
             this.OnChange(this.page, this.rows);
         },
         /**
@@ -113,7 +113,7 @@ Vue.component("srv-pagination", {
     '      &nbsp;' +
     '    <input type="text" class="form-control" style="width:60px" v-bind:value="page" v-on:blur="SetPage">' +
     '    <div class="input-group-append">' +
-    '      <span class="input-group-text" id="basic-addon2">/{{(count / rows) + 1}}</span>\n' +
+    '      <span class="input-group-text" id="basic-addon2">/{{parseInt(count / rows) + 1}}</span>\n' +
     '    </div>\n' +
     '    <button class="btn btn-outline-secondary" type="button" v-on:click="JumpToPage">GO</button>\n' +
     '      &nbsp;' +
