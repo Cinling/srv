@@ -1,6 +1,6 @@
-package cn.cinling.srv.service.system_monitor;
+package cn.cinling.srv.database.service.system_monitor;
 
-import cn.cinling.srv.entity.SystemMonitorEntity;
+import cn.cinling.srv.database.entity.SystemMonitorEntity;
 
 import java.util.List;
 

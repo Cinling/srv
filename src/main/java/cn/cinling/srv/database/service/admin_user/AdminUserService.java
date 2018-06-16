@@ -1,6 +1,6 @@
-package cn.cinling.srv.service.admin_user;
+package cn.cinling.srv.database.service.admin_user;
 
-import cn.cinling.srv.entity.AdminUserEntity;
+import cn.cinling.srv.database.entity.AdminUserEntity;
 
 import java.util.List;
 

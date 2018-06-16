@@ -1,6 +1,6 @@
-package cn.cinling.srv.service.user;
+package cn.cinling.srv.database.service.user;
 
-import cn.cinling.srv.entity.UserEntity;
+import cn.cinling.srv.database.entity.UserEntity;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package cn.cinling.srv.schedule;
 
-import cn.cinling.srv.entity.SystemMonitorEntity;
-import cn.cinling.srv.service.system_monitor.SystemMonitorService;
+import cn.cinling.srv.database.entity.SystemMonitorEntity;
+import cn.cinling.srv.database.service.system_monitor.SystemMonitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

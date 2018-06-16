@@ -1,4 +1,4 @@
-package cn.cinling.srv.controller;
+package cn.cinling.srv.http.controller;
 
 import cn.cinling.srv.model.MenuModel;
 import org.springframework.stereotype.Controller;

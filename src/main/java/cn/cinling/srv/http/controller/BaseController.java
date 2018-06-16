@@ -1,4 +1,4 @@
-package cn.cinling.srv.controller;
+package cn.cinling.srv.http.controller;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

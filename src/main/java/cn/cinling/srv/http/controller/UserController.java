@@ -1,7 +1,7 @@
-package cn.cinling.srv.controller;
+package cn.cinling.srv.http.controller;
 
-import cn.cinling.srv.entity.UserEntity;
-import cn.cinling.srv.service.user.UserService;
+import cn.cinling.srv.database.entity.UserEntity;
+import cn.cinling.srv.database.service.user.UserService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

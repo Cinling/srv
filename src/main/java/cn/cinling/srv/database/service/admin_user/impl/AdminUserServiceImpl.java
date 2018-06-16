@@ -1,8 +1,8 @@
-package cn.cinling.srv.service.admin_user.impl;
+package cn.cinling.srv.database.service.admin_user.impl;
 
-import cn.cinling.srv.entity.AdminUserEntity;
-import cn.cinling.srv.mapper.AdminUserMapper;
-import cn.cinling.srv.service.admin_user.AdminUserService;
+import cn.cinling.srv.database.entity.AdminUserEntity;
+import cn.cinling.srv.database.mapper.AdminUserMapper;
+import cn.cinling.srv.database.service.admin_user.AdminUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

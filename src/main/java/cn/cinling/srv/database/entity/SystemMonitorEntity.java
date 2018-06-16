@@ -1,4 +1,4 @@
-package cn.cinling.srv.entity;
+package cn.cinling.srv.database.entity;
 
 public class SystemMonitorEntity {
     public SystemMonitorEntity() {

@@ -28,10 +28,10 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: cn.cinling.srv.entity
+  type-aliases-package: cn.cinling.srv.database.entity
 
 mapper:
-  mappers:  cn.cinling.srv.mapper
+  mappers:  cn.cinling.srv.database.mapper
   not-empty: false
   identity: MYSQL
 

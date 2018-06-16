@@ -1,8 +1,8 @@
-package cn.cinling.srv.service.user.impl;
+package cn.cinling.srv.database.service.user.impl;
 
-import cn.cinling.srv.mapper.UserMapper;
-import cn.cinling.srv.entity.UserEntity;
-import cn.cinling.srv.service.user.UserService;
+import cn.cinling.srv.database.mapper.UserMapper;
+import cn.cinling.srv.database.entity.UserEntity;
+import cn.cinling.srv.database.service.user.UserService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
-package cn.cinling.srv.mapper;
+package cn.cinling.srv.database.mapper;
 
-import cn.cinling.srv.entity.UserEntity;
+import cn.cinling.srv.database.entity.UserEntity;
 
 import java.util.List;
 

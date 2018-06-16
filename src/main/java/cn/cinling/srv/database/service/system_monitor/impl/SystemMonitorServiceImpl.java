@@ -1,8 +1,8 @@
-package cn.cinling.srv.service.system_monitor.impl;
+package cn.cinling.srv.database.service.system_monitor.impl;
 
-import cn.cinling.srv.entity.SystemMonitorEntity;
-import cn.cinling.srv.mapper.SystemMonitorMapper;
-import cn.cinling.srv.service.system_monitor.SystemMonitorService;
+import cn.cinling.srv.database.entity.SystemMonitorEntity;
+import cn.cinling.srv.database.mapper.SystemMonitorMapper;
+import cn.cinling.srv.database.service.system_monitor.SystemMonitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

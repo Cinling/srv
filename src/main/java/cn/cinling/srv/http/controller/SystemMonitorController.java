@@ -1,7 +1,7 @@
-package cn.cinling.srv.controller;
+package cn.cinling.srv.http.controller;
 
-import cn.cinling.srv.entity.SystemMonitorEntity;
-import cn.cinling.srv.service.system_monitor.SystemMonitorService;
+import cn.cinling.srv.database.entity.SystemMonitorEntity;
+import cn.cinling.srv.database.service.system_monitor.SystemMonitorService;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
