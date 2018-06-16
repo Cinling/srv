@@ -22,4 +22,9 @@ public class AdminUserServiceImpl implements AdminUserService {
     public List<AdminUserEntity> GetAll() {
         return this.adminUserMapper.SelectAll();
     }
+
+    @Override
+    public int GetCount() {
+        return this.adminUserMapper.SelectCount();
+    }
 }

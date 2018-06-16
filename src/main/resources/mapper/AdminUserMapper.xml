@@ -12,4 +12,9 @@
         FROM admin_user
     </select>
 
+    <select id="SelectCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM admin_user
+    </select>
+
 </mapper>
