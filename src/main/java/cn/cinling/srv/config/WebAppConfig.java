@@ -3,10 +3,10 @@ package cn.cinling.srv.config;
 import cn.cinling.srv.http.interceptor.AuthInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 @Configuration
-public class WebAppConfig extends WebMvcConfigurerAdapter {
+public class WebAppConfig extends WebMvcConfigurationSupport {
 
     /**
      * 拦截器配置

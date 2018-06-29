@@ -28,9 +28,8 @@ public class AdminUserController extends BaseController {
      * @return
      */
     @GetMapping("init")
-    @ResponseBody
     public String InitAdminUserPage() {
-        return "init";
+        return "admin-user/init";
     }
 
     @ResponseBody
