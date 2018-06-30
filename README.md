@@ -1,3 +1,7 @@
+#注意
+### 该项目已经停止开发，已经整合到新的项目里，开发成一个更大的项目
+https://github.com/Cinling/multiple-webside
+
 
 # 项目简介
 ### 项目所需的软件版本
